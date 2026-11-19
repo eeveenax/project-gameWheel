@@ -1035,16 +1035,12 @@ export function RetosGame() {
             className="players-section pirate-players"
             aria-labelledby="players-heading"
           >
-            <div className="section-heading">
+            <div className="text-sm">
               <div>
-                <p className="eyebrow">LA TRIPULACIÓN</p>
-                <h2 id="players-heading">
+                <h2>
                   Piratas <span className="player-count">{players.length}</span>
                 </h2>
               </div>
-              <span className="leader-label">
-                <Trophy size={14} /> {leader} pts para ganar
-              </span>
             </div>
             <form className="add-player" onSubmit={addPlayer}>
               <input

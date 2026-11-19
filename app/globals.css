@@ -1675,13 +1675,13 @@
 }
 .player-photo-control {
   position: relative;
-  width: 38px;
-  height: 38px;
-  flex: 0 0 38px;
+  width: 80px;
+  height: 80px;
+  flex: 0 0 80px;
 }
 .player-photo-control .avatar-color {
-  width: 38px;
-  height: 38px;
+  width: 80px;
+  height: 80px;
   display: grid;
   place-items: center;
   overflow: hidden;
@@ -1750,5 +1750,99 @@
 @media (prefers-reduced-motion: reduce) {
   .pirate-wheel.wheel-spin {
     animation: none;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Tripulación: columna más ancha, alineada con el mapa y en cuadrícula
+   ------------------------------------------------------------------ */
+.pirate-page .game-shell {
+  width: min(1440px, calc(100% - 64px));
+}
+.pirate-layout {
+  grid-template-columns: minmax(0, 1.45fr) minmax(440px, 1fr);
+  gap: 28px;
+}
+.pirate-page .players-section {
+  padding: 18px;
+}
+.players-column .leader-label {
+  color: #f0e5c9;
+  font-size: 13px;
+}
+.pirate-page .player-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 12px;
+}
+.pirate-page .player-card {
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  min-height: 0;
+  padding: 16px 8px 12px;
+  text-align: center;
+}
+.pirate-page .player-card .player-main {
+  flex: none;
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+.pirate-page .player-card .player-info {
+  align-items: center;
+  width: 100%;
+}
+.pirate-page .player-card .player-info strong {
+  max-width: 100%;
+  font-size: 14px;
+}
+.pirate-page .player-card .score-display {
+  flex-direction: row;
+  align-items: baseline;
+  gap: 4px;
+}
+.pirate-page .player-card .score-display span {
+  margin-top: 0;
+}
+.pirate-page .player-card .remove-player {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+/* En escritorio, la columna de la tripulación se queda fija al hacer scroll */
+@media (min-width: 781px) {
+  .players-column {
+    position: sticky;
+    top: 16px;
+  }
+  .players-column .players-section {
+    max-height: calc(100vh - 90px);
+    overflow-y: auto;
+  }
+}
+
+/* Tablet/móvil: una sola columna, tarjetas más estrechas */
+@media (max-width: 1100px) {
+  .pirate-layout {
+    grid-template-columns: 1fr;
+  }
+  .players-column {
+    position: static;
+  }
+  .players-column .players-section {
+    max-height: none;
+  }
+}
+@media (max-width: 520px) {
+  .pirate-page .game-shell {
+    width: calc(100% - 22px);
+  }
+  .pirate-page .player-list {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 8px;
   }
 }
